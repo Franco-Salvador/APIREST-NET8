@@ -8,6 +8,6 @@
 
         T GetById(int id);
 
-        void Delete(int id);
+        void Delete(int id);pepe
     }
 }
