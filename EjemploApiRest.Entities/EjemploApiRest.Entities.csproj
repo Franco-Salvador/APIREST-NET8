@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EjemploApiRest.Abstractions\EjemploApiRest.Abstractions.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,6 @@
+using EjemploApiRest.Abstractions;
 using EjemploApiRest.Application;
+using EjemploApiRest.DataAccess;
 using EjemploApiRest.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +16,7 @@ builder.Services.AddSwaggerGen();
 // Configuración de inyección de dependencias
 builder.Services.AddScoped(typeof(IApplication<>), typeof(Application<>));
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped(typeof(IDbContext<>), typeof(DbContext<>));
 
 var app = builder.Build();
 

@@ -1,27 +1,49 @@
 ﻿using System.Data;
+using System.Security.Principal;
 using EjemploApiRest.Abstractions;
 namespace EjemploApiRest.DataAccess
+
 {
-    public class DbContext<T> : IDbContext<T>
+    public class DbContext<T> : IDbContext<T> where T : IEntity
     {
+        IList<T> _data; //Lista para poder guardar los datos
+        public DbContext()
+        {
+            _data = new List<T>();
+        }
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var e = _data.Where(u => u.Id.Equals(id)).FirstOrDefault();
+            if (e != null)
+            {
+                _data.Remove(e);
+            }
         }
 
-        public IList<T> GetAll()
+        public System.Collections.Generic.IList<T> GetAll()
         {
-            throw new NotImplementedException();
+            return _data;
         }
 
         public T GetById(int id)
         {
-            throw new NotImplementedException();
+            return _data.Where(e => e.Id.Equals(id)).FirstOrDefault();
         }
 
         public T Save(T entity)
         {
-            throw new NotImplementedException();
+            if (entity.Id.Equals(0))
+            {
+                _data.Add(entity);
+
+            }
+            else
+            {
+
+            }
+
+            return entity;
         }
+
     }
 }
